@@ -1,0 +1,57 @@
+create table diaries(
+id integer not null primary key AUTOINCREMENT,
+postdate date,
+title varchar(255),
+maintext text,
+author integer,
+taxonomy integer,
+category integer,
+trashbox integer not null default 0,
+created DATETIME DEFAULT NULL,
+modified DATETIME DEFAULT NULL
+);
+
+
+create table posts(
+id integer not null primary key AUTOINCREMENT,
+title varchar(50),
+body text,
+author integer,
+taxonomy integer,
+category integer,
+deleteflag integer not null default 0,
+created DATETIME DEFAULT NULL,
+modified DATETIME DEFAULT NULL
+);
+
+
+insert into posts(title,body,author,taxonomy,category) values ('test','test',1,1,1);
+
+
+
+
+
+
+
+create table authors(
+id integer not null primary key AUTOINCREMENT,
+authorname varchar(255),
+password varchar(255),
+trashbox integer not null default 0
+);
+
+create table taxonomies(
+id integer not null primary key AUTOINCREMENT,
+taxonomy varchar(255),
+trashbox integer not null default 0
+);
+
+create table categories(
+id integer not null primary key AUTOINCREMENT,
+category varchar(255),
+trashbox integer not null default 0
+);
+
+
+
+insert into diaries(title) values ('hello world');
