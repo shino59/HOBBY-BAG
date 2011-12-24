@@ -19,7 +19,7 @@ deleteflag integer not null default 0
 
 create table categories(
 id integer not null primary key AUTOINCREMENT,
-taxonomy_id integer not null,
+taxonomies_id integer not null,
 name varchar(255),
 created DATETIME DEFAULT NULL,
 modified DATETIME DEFAULT NULL,
@@ -38,7 +38,7 @@ deleteflag integer not null default 0
 
 create table comments(
 id integer not null primary key AUTOINCREMENT,
-posts_id integer not null
+posts_id integer not null,
 handle_name varchar(50),
 mail_address varchar(255),
 body text,
@@ -53,10 +53,13 @@ posts_id integer not null,
 categories_id integer not null
 );
 
-
 --------------------------------------------------------
 テストデータインサート
 --------------------------------------------------------
 insert into posts(title,body,author) values ('test1','test1',1);
 insert into posts(title,body,author) values ('test2','test2',1);
 insert into posts(title,body,author) values ('test3','test3',1);
+insert into taxonomies(name) values ('notselected');
+insert into categories(taxonomies_id,name) values (1,'notselected');
+insert into authors(username) values ('shino');
+insert into comments(posts_id,name) values (1,'hello world');
