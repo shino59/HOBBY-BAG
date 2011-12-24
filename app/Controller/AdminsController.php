@@ -40,9 +40,8 @@ class AdminsController extends AppController{
 		}
 		else{
 			if($this->Post->save($this->request->data)){
-				var_dump($this->request->data);
-				//$this->Session->setFlash('変更しました');
-				//$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash('変更しました');
+				$this->redirect(array('action' => 'index'));
 			}
 			else{
 				$this->Session->setFlash('失敗しました');
@@ -68,7 +67,8 @@ class AdminsController extends AppController{
 	/*---------------------------------------------*/
 	//タクソノミー
 	/*---------------------------------------------*/
-	function taxonomy(){
+	function taxonomy($id=null){
+		$this->Taxonomy->id=$id;
 		$this->set('taxonomies',$this->Taxonomy->find('all',array('conditions'=>array('deleteflag'=>0))));
 		if($this->request->is('post')) {
 			if($this->Taxonomy->save($this->request->data)) {
@@ -80,25 +80,7 @@ class AdminsController extends AppController{
 			}
 		}
 	}
-	
-	function taxonomy_add(){
-		var_dump($this->Taxonomy->validate);
-		if($this->Taxonomy->validates){
-			
-			//$this->redirect(array('action' => 'taxonomy'));
-		}
-		/*
-		if($this->request->is('post')) {
-			if($this->Taxonomy->save($this->request->data)) {
-				$this->Session->setFlash('投稿しました');
-				$this->redirect(array('action' => 'taxonomy'));
-			}
-			else{
-				$this->Session->setFlash('投稿に失敗しました');
-			}
-		}
-		*/
-	}
+
 	function taxonomy_edit($id=null){
 		echo 'やっほー';
 	}

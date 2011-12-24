@@ -14,9 +14,9 @@ echo $this->Form->end('追加');
 			<td><?php echo $taxonomy['Taxonomy']['id']; ?></td>
 			<td>
 				<?php 
-				echo $this->Form->create('Taxonomy',array('action'=>'taxonomy_edit'));
+				echo $this->Form->create('Taxonomy',array('url'=>array('controller'=>'admins','action'=>'taxonomy')));
 				echo $this->Form->input('name',array('value'=>$taxonomy['Taxonomy']['name']));
-				echo $this->Form->input('id',array('type'=>'hidden'));
+				echo $this->Form->input('id',array('type'=>'hidden','value'=>$taxonomy['Taxonomy']['id']));
 				?>
 			</td>
 			<td>
@@ -24,7 +24,7 @@ echo $this->Form->end('追加');
 			</td>
 			<td>
 				<?php echo $this->Form->postLink('削除',
-					array('action'=>'taxonomy_delete',$taxonomy['Taxonomy']['id']),array('confirm'=>'削除しますよ?')); ?>
+					array('action'=>'taxonomy_delete',$taxonomy['Taxonomy']['id']),array('confirm'=>'削除してよろしいですか?')); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
