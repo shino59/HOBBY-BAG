@@ -62,4 +62,4 @@ insert into posts(title,body,author) values ('test3','test3',1);
 insert into taxonomies(name) values ('notselected');
 insert into categories(taxonomies_id,name) values (1,'notselected');
 insert into authors(username) values ('shino');
-insert into comments(posts_id,name) values (1,'hello world');
+insert into comments(posts_id,handle_name,body) values (1,'hamachichan','hello world');
