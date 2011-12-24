@@ -1,57 +1,62 @@
-create table diaries(
-id integer not null primary key AUTOINCREMENT,
-postdate date,
-title varchar(255),
-maintext text,
-author integer,
-taxonomy integer,
-category integer,
-trashbox integer not null default 0,
-created DATETIME DEFAULT NULL,
-modified DATETIME DEFAULT NULL
-);
-
-
 create table posts(
 id integer not null primary key AUTOINCREMENT,
 title varchar(50),
 body text,
 author integer,
-taxonomy integer,
-category integer,
-deleteflag integer not null default 0,
+postdate DATETIME,
 created DATETIME DEFAULT NULL,
-modified DATETIME DEFAULT NULL
-);
-
-
-insert into posts(title,body,author,taxonomy,category) values ('test','test',1,1,1);
-
-
-
-
-
-
-
-create table authors(
-id integer not null primary key AUTOINCREMENT,
-authorname varchar(255),
-password varchar(255),
-trashbox integer not null default 0
+modified DATETIME DEFAULT NULL,
+deleteflag integer not null default 0
 );
 
 create table taxonomies(
 id integer not null primary key AUTOINCREMENT,
-taxonomy varchar(255),
-trashbox integer not null default 0
+name varchar(50),
+created DATETIME DEFAULT NULL,
+modified DATETIME DEFAULT NULL,
+deleteflag integer not null default 0
 );
 
 create table categories(
 id integer not null primary key AUTOINCREMENT,
-category varchar(255),
-trashbox integer not null default 0
+taxonomy_id integer not null,
+name varchar(255),
+created DATETIME DEFAULT NULL,
+modified DATETIME DEFAULT NULL,
+deleteflag integer not null default 0
+);
+
+create table authors(
+id integer not null primary key AUTOINCREMENT,
+username varchar(50),
+password varchar(50),
+role VARCHAR(50),
+created DATETIME DEFAULT NULL,
+modified DATETIME DEFAULT NULL,
+deleteflag integer not null default 0
+);
+
+create table comments(
+id integer not null primary key AUTOINCREMENT,
+posts_id integer not null
+handle_name varchar(50),
+mail_address varchar(255),
+body text,
+created DATETIME DEFAULT NULL,
+modified DATETIME DEFAULT NULL,
+deleteflag integer not null default 0
+);
+
+create table posts_categories(
+id integer not null primary key AUTOINCREMENT,
+posts_id integer not null,
+categories_id integer not null
 );
 
 
-
-insert into diaries(title) values ('hello world');
+--------------------------------------------------------
+テストデータインサート
+--------------------------------------------------------
+insert into posts(title,body,author) values ('test1','test1',1);
+insert into posts(title,body,author) values ('test2','test2',1);
+insert into posts(title,body,author) values ('test3','test3',1);
