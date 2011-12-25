@@ -1,7 +1,7 @@
 <?php
 class AdminsController extends AppController{
 	public $name='Admins';
-	public $uses=array('Post','Taxonomy','Category');
+	public $uses=array('Post','Taxonomy','Category','CategoriesPost');
 	public $helpers=array('Html','Form');
 	public $layout = 'adminslayout';
 
@@ -13,7 +13,8 @@ class AdminsController extends AppController{
 	}
 
 	function index(){
-		$this->set('posts',$this->Post->find('all',array('conditions'=>array('deleteflag'=>0))));
+		$this->set('posts',$this->Post->find('all',array('conditions'=>array('deleteflag'=>0))
+		));
 	}
 	
 	function view($id=null){
@@ -22,8 +23,11 @@ class AdminsController extends AppController{
 	}
 	
 	function add(){
-		if($this->request->is('post')) {
-			if($this->Post->save($this->request->data)) {
+		$this->set('categories',$this->Category->find('list',array(
+																'conditions'=>array('deleteflag'=>0),
+																'order'=>'Category.taxonomies_id DESC')));
+		if($this->request->is('post')){
+			if($this->Post->save($this->request->data)){
 				$this->Session->setFlash('投稿しました');
 				$this->redirect(array('action' => 'index'));
 			}

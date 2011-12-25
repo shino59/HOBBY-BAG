@@ -47,10 +47,10 @@ modified DATETIME DEFAULT NULL,
 deleteflag integer not null default 0
 );
 
-create table posts_categories(
+create table categories_posts(
 id integer not null primary key AUTOINCREMENT,
-posts_id integer not null,
-categories_id integer not null
+category_id integer not null,
+post_id integer not null
 );
 
 --------------------------------------------------------
