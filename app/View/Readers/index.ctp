@@ -1,16 +1,14 @@
-<table>
-	<tr>
-		<th>Id</th><th>Title</th><th>Created</th>
-	</tr>
-	
-	<?php foreach ($posts as $post): ?>
-		<tr>
-			<td><?php echo $post['Post']['id']; ?></td>
-			<td>
-				<?php echo $this->Html->link($post['Post']['title'],
+<?php foreach ($posts as $post): ?>
+	<div id="title">
+		<span class='post_title'>
+			<?php echo $this->Html->link($post['Post']['title'],
 				array('controller' => 'readers', 'action' => 'view', $post['Post']['id'])); ?>
-			</td>
-			<td><?php echo $post['Post']['created']; ?></td>
-		</tr>
-	<?php endforeach; ?>
-</table>
+		</span>
+		<span class="post_date">
+			(<?php echo date('Y年m月d日',$post['Post']['postdate']); ?>)
+		</span>
+	</div>
+	<div id="maintext">
+		<?php echo $post['Post']['body']; ?>
+	</div>
+<?php endforeach; ?>

@@ -20,7 +20,7 @@
 					<?php echo $content_for_layout; ?>
 				</div>
 				<div id="sidebar">
-					<span>サイドバー</span>
+					<span>sidebar</span>
 				</div>
 				<div id="foot">
 					<p>Copyright &copy; HOBBY BAG, All Rights Reserved.</p>
