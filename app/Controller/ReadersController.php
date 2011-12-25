@@ -6,7 +6,7 @@ class ReadersController extends AppController{
 	public $layout = 'readerslayout';
 
 	public function index(){
-		$this->set('posts',$this->Post->find('all'));
+		$this->set('posts',$this->Post->find('all',array('conditions'=>array('deleteflag'=>0))));
 	}
 	
 	public function view($id=null){

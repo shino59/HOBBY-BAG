@@ -1,4 +1,7 @@
 <?php
 class Category extends AppModel {
-	var $name = 'Category';
+	public $name = 'Category';
+	public $validate=array(
+				'name' => array('rule' => 'notEmpty')
+	);
 }

@@ -1,5 +1,5 @@
 <p><?php echo $this->Html->link("投稿", array('action' => 'add')); ?></p>
-<p><?php echo $this->Html->link("タクソノミー", array('action' => 'taxonomy')); ?></p>
+<p><?php echo $this->Html->link("カテゴリー", array('action' => 'taxonomy')); ?></p>
 <table>
 	<tr>
 		<th>Id</th><th>Title</th><th>編集/削除</th><th>Created</th>
