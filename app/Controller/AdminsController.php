@@ -22,33 +22,53 @@ class AdminsController extends AppController{
 		$this->set('post',$this->Post->read());
 	}
 	
+	function categorylist(){
+		$list=$this->Category->find('list',array(
+							'conditions'=>array('deleteflag'=>0),
+							'order'=>'Category.taxonomies_id DESC')
+		);
+		$this->set('categories',$list);
+	}
+
 	function add(){
-		$this->set('categories',$this->Category->find('list',array(
-																'conditions'=>array('deleteflag'=>0),
-																'order'=>'Category.taxonomies_id DESC')));
+		$this->categorylist();
 		if($this->request->is('post')){
-			if($this->Post->save($this->request->data)){
-				$this->Session->setFlash('投稿しました');
-				$this->redirect(array('action' => 'index'));
+			//チェックボックスバリデート
+			if($this->data['Category']['Category'] == ''){
+				$this->set('error_message','Please select one');
 			}
 			else{
-				$this->Session->setFlash('投稿に失敗しました');
+				if($this->Post->save($this->request->data)){
+					$this->Session->setFlash('投稿しました');
+					$this->redirect(array('action' => 'index'));
+				}
+				else{
+					$this->Session->setFlash('投稿に失敗しました');
+				}
 			}
 		}
 	}
 	
 	function edit($id=null){
+		$this->categorylist();
 		$this->Post->id=$id;
 		if($this->request->is('get')){
 			$this->request->data=$this->Post->read();
+
 		}
 		else{
-			if($this->Post->save($this->request->data)){
-				$this->Session->setFlash('変更しました');
-				$this->redirect(array('action' => 'index'));
+			//チェックボックスバリデート
+			if($this->data['Category']['Category'] == ''){
+				$this->set('error_message','Please select one');
 			}
 			else{
-				$this->Session->setFlash('失敗しました');
+				if($this->Post->save($this->request->data)){
+					$this->Session->setFlash('変更しました');
+					$this->redirect(array('action' => 'index'));
+				}
+				else{
+					$this->Session->setFlash('失敗しました');
+				}
 			}
 		}
 	}

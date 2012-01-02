@@ -1,4 +1,4 @@
 <?php
 class Author extends AppModel {
-	var $name = 'Author';
+	public $name = 'Author';
 }

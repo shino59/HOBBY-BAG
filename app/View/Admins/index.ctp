@@ -15,9 +15,9 @@
 			<td>
 				<?php echo $this->Html->link('編集', array('action' => 'edit', $post['Post']['id']));?>
 				<?php echo $this->Form->postLink('削除',
-					array('action'=>'delete',$post['Post']['id']),array('confirm'=>'削除しますよ?')); ?>
+					array('action'=>'delete',$post['Post']['id']),array('confirm'=>'削除してよろしいですか?')); ?>
 			</td>
-			<td><?php echo $post['Post']['created']; ?></td>
+			<td><?php echo date('Y年m月d日',$post['Post']['postdate']); ?></td>
 		</tr>
 	<?php endforeach; ?>
 </table>

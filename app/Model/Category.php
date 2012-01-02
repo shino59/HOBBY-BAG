@@ -1,7 +1,10 @@
 <?php
 class Category extends AppModel {
 public $name = 'Category';
-	public $validate=array('name' => array('rule' => 'notEmpty'));
+	public $validate=array(
+				'name' => array('rule' => 'notEmpty')
+	);
+/*
 	public $hasAndBelongsToMany=array(
 				'Post'=>array(
 					'className'				=>'Post',
@@ -20,6 +23,5 @@ public $name = 'Category';
 					'insertQuery'				=>''
 				)
 	);
-	
-	
+*/
 }
