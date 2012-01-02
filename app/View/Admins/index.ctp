@@ -17,7 +17,7 @@
 				<?php echo $this->Form->postLink('削除',
 					array('action'=>'delete',$post['Post']['id']),array('confirm'=>'削除してよろしいですか?')); ?>
 			</td>
-			<td><?php echo date('Y年m月d日',$post['Post']['postdate']); ?></td>
+			<td><?php echo date('Y年m月d日',strtotime($post['Post']['postdate'])); ?></td>
 		</tr>
 	<?php endforeach; ?>
 </table>
