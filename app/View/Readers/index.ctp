@@ -5,7 +5,7 @@
 				array('controller' => 'readers', 'action' => 'view', $post['Post']['id'])); ?>
 		</span>
 		<span class="post_date">
-			(<?php echo date('Y年m月d日',$post['Post']['postdate']); ?>)
+			(<?php echo date('Y年m月d日',strtotime($post['Post']['postdate'])); ?>)
 		</span>
 	</div>
 	<div id="maintext">
