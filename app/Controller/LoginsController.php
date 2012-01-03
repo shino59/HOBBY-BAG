@@ -7,7 +7,7 @@ class LoginsController extends AppController{
 	
 	function index(){
 		if($this->request->is('post')){
-			if($this->request['data']['Post']['loginid']==='blogblog'){
+			if($this->request['data']['Post']['loginid']==='＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊'){
 				CakeSession::write('loginflag', 'on');
 				$this->redirect('/admins/');
 			}

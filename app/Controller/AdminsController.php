@@ -54,7 +54,6 @@ class AdminsController extends AppController{
 		$this->Post->id=$id;
 		if($this->request->is('get')){
 			$this->request->data=$this->Post->read();
-
 		}
 		else{
 			//チェックボックスバリデート

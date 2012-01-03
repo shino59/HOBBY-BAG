@@ -11,6 +11,15 @@ class Post extends AppModel{
 								'required'=>true,
 								'message'=>'Please select one')
 				*/
+	);	
+	
+	public $hasMany=array(
+			'Comment' => array(
+				'className' => 'Comment',
+				'foreignKey' => 'posts_id',
+				'conditions' => array('NOT'=>array('deleteflag' => 1)),
+				'dependent'=> true
+			)
 	);
 
 	public $hasAndBelongsToMany=array(

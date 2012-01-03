@@ -1,5 +1,7 @@
 # git addの除外パターン指定
-tmp
-tmp/*
+app/tmp
+app/tmp/*
+app/Config/core.php
+app/Controller/LoginsController.php
 *~
 *#
